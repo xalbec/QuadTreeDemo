@@ -119,17 +119,17 @@ public class QuadTree {
     }
 
     //will need to return points of the quadtree located inside the quadtree inside some bound.
-    public void query(Boundary bound, ArrayList<PVector> foundPnts){
+    public ArrayList<PVector> query(Boundary bound){
 
-    
+        ArrayList<PVector> foundPnts = new ArrayList<PVector>();
 
         if(this.boundary.intersects(bound)){
 
             if(isDivided){
-                NE.query(bound, foundPnts);
-                NW.query(bound, foundPnts);
-                SE.query(bound, foundPnts);
-                SW.query(bound, foundPnts);
+                foundPnts.addAll(NE.query(bound));
+                foundPnts.addAll(NW.query(bound));
+                foundPnts.addAll(SE.query(bound));
+                foundPnts.addAll(SW.query(bound));
             }else{
 
                 for(PVector p : this.points){
@@ -141,6 +141,8 @@ public class QuadTree {
             }
 
         }
+
+        return foundPnts;
 
     }
 

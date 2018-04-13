@@ -34,8 +34,8 @@ public class Main extends PApplet {
             qt.insert(new PVector(random(WIDTH), random(HEIGHT)));
         }
 
-        qt.query(bound,foundPnts);
-        System.out.println(foundPnts.size());
+        int f = qt.query(bound).size();
+        System.out.println(f);
 
     }
 
@@ -58,11 +58,6 @@ public class Main extends PApplet {
         //if you wanna click to add points uncomment
         PVector p = new PVector(mouseX, mouseY);
         qt.insert(p);
-
-        if(bound.contains(p)){
-            foundPnts.add(p);
-        }
-        System.out.println(foundPnts.size());
 
     }
 
